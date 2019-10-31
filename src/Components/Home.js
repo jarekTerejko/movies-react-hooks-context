@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import HeroImage from "./HeroImage";
 import SearchBar from "./SearchBar";
 import Grid from "./Grid";
@@ -9,28 +9,37 @@ import { MovieContext } from "../Contexts/MovieContext";
 import { apiKey, apiUrl, imgBaseUrl, imgBig, imgPoster } from "../config";
 
 const Home = () => {
-  const { loading, currentPage, totalPages, movies, searchTerm } = useContext(MovieContext);
+  const { loading, currentPage, totalPages, movies, searchTerm, getMovies } = useContext(
+    MovieContext
+  );
 
   console.log(currentPage, totalPages, movies);
 
-    return (
-      <div>
-        <div>
-          <HeroImage />
-          <SearchBar />
-        </div>
+  // useEffect(() => {
+  //   // setLoading(true);
+  //   const endpoint = `${apiUrl}movie/popular?api_key=${apiKey}&page=1`;
+  //   getMovies(endpoint)
+  //   console.log("use effect hook");
+  // }, []);
+  
 
-        <Grid 
+  return (
+    <div>
+      <div>
+        <HeroImage />
+        <SearchBar />
+      </div>
+
+      <Grid
         // header={searchTerm && !loading ? "Search Results" : "Pupular Movies"}
         header={"Movies"}
-         />
-        {loading ? <Spinner/> : null}
-        <LoadMoreBtn/>
-        {/* <LoadMoreBtn /> */}
-        {/* <Spinner /> */}
-      </div>
-    );
-  
+      />
+      {loading ? <Spinner /> : null}
+      <LoadMoreBtn />
+      {/* <LoadMoreBtn /> */}
+      {/* <Spinner /> */}
+    </div>
+  );
 };
 
 export default Home;

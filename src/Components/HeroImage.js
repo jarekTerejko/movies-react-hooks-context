@@ -11,7 +11,7 @@ const HeroImage = props => {
       {popularMovie ? (
         <div
           style={{
-            background: `linear-gradient(to bottom, rgba(0,0,0,.3) 20%, rgba(0,0,0,.8) 100%), url('${imgBaseUrl}${imgBig}${popularMovie.backdrop_path}')`,
+            background: `linear-gradient(to bottom, rgba(0,0,0,.4) 20%, rgba(0,0,0,.9) 100%), url('${imgBaseUrl}${imgBig}${popularMovie.backdrop_path}')`,
             minHeight: "100vh",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
@@ -19,11 +19,14 @@ const HeroImage = props => {
             backgroundSize: "cover",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end"
+            justifyContent: "flex-end",
+            paddingBottom: "30px"
           }}
         >
-          <h1>{popularMovie.original_title}</h1>
-          <p>{popularMovie.overview}</p>
+          <div className="container">
+            <h1>{popularMovie.original_title}</h1>
+            <p>{popularMovie.overview}</p>
+          </div>
         </div>
       ) : null}
     </div>
@@ -31,4 +34,3 @@ const HeroImage = props => {
 };
 
 export default HeroImage;
-

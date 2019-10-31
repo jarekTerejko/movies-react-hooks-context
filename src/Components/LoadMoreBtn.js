@@ -6,23 +6,20 @@ const LoadMoreBtn = () => {
     MovieContext
   );
 
-  {
-    if (currentPage < totalPages && !loading) {
-      return (
-        <div className="container">
-          <button className="btn" onClick={getMoreMovies}>
-            Load More
-          </button>
-        </div>
-      );
-    } else {
-      return (
-          <div className="container">
-      <h4>There is no more movies to show</h4>
-
-          </div>
-      )
-    }
+  if (currentPage < totalPages && !loading) {
+    return (
+      <div className="container">
+        <button className="btn" onClick={getMoreMovies}>
+          Load More
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="container">
+        <h4>There is no more movies to show</h4>
+      </div>
+    );
   }
 };
 
