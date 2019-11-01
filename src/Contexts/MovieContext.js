@@ -72,6 +72,7 @@ const MovieContextProvider = props => {
       setTotalPages(data.total_pages);
       setLoading(false);
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   };
@@ -109,9 +110,12 @@ const MovieContextProvider = props => {
   // getMovies(endpoint);
 
   const searchMovies = async searchTerm => {
+    setpopularMovie(null)
+
     console.log(searchTerm);
     console.log(movies);
     let endpoint = "";
+
 
     setMovies([]);
     setLoading(true);

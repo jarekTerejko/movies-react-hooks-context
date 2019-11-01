@@ -9,9 +9,14 @@ import { MovieContext } from "../Contexts/MovieContext";
 import { apiKey, apiUrl, imgBaseUrl, imgBig, imgPoster } from "../config";
 
 const Home = () => {
-  const { loading, currentPage, totalPages, movies, searchTerm, getMovies } = useContext(
-    MovieContext
-  );
+  const {
+    loading,
+    currentPage,
+    totalPages,
+    movies,
+    searchTerm,
+    getMovies
+  } = useContext(MovieContext);
 
   console.log(currentPage, totalPages, movies);
 
@@ -21,25 +26,29 @@ const Home = () => {
   //   getMovies(endpoint)
   //   console.log("use effect hook");
   // }, []);
-  
 
-  return (
-    <div>
+  if (movies) {
+    return (
       <div>
-        <HeroImage />
-        <SearchBar />
-      </div>
+        <div>
+          <HeroImage />
+          <SearchBar />
+        </div>
 
-      <Grid
-        // header={searchTerm && !loading ? "Search Results" : "Pupular Movies"}
-        header={"Movies"}
-      />
-      {loading ? <Spinner /> : null}
-      <LoadMoreBtn />
-      {/* <LoadMoreBtn /> */}
-      {/* <Spinner /> */}
-    </div>
-  );
+        <Grid
+          // header={searchTerm && !loading ? "Search Results" : "Pupular Movies"}
+          header={"Movies"}
+        />
+        {/* <Spinner/> */}
+        {loading ? <Spinner /> : null}
+        <LoadMoreBtn />
+        {/* <LoadMoreBtn /> */}
+        {/* <Spinner /> */}
+      </div>
+    );
+  } else {
+    return <Spinner />;
+  }
 };
 
 export default Home;
