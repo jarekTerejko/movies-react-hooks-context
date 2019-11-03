@@ -5,6 +5,7 @@ import MovieDetails from "./MovieDetails";
 import Actor from "./Actor";
 import Spinner from "./Spinner";
 import MovieDetailsNavbar from "./MovieDetailsNavbar";
+import MovieDetailsList from "./MovieDetailsList";
 
 const Movie = props => {
   const {
@@ -44,6 +45,7 @@ const Movie = props => {
     <div>
       <MovieDetailsNavbar url={props.match.params.movieId} />
       <MovieDetails />
+      <MovieDetailsList/>
       <Actor />
     </div>
   );

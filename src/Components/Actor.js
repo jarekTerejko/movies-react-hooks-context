@@ -11,9 +11,9 @@ const Actor = () => {
   if (actors) {
       return (
     <div className="grid-container container" style={{marginTop: "20px"}}>
-      {actors.map(actor => {
+      {actors.map((actor, i) => {
         return (
-          <div className="center card" style={{paddingTop: "15px"}}>
+          <div key={i} className="center card" style={{paddingTop: "15px"}}>
             <img className="responsive-img"
               src={
                 actor.profile_path

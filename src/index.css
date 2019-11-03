@@ -97,6 +97,12 @@ code {
   align-items: center;
 }
 
+.movie-details-list-cont {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-gap: 10px;
+}
+
 @media (max-width: 767px) {
   .movie-details-content {
     grid-template-columns: 1fr;
@@ -122,3 +128,4 @@ code {
 
   }
 }
+

@@ -32,7 +32,8 @@ const MovieDetails = () => {
           minHeight: "80vh",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
+          padding: "10px 0",
         }}
       >
         {/* <div className="container"> */}
