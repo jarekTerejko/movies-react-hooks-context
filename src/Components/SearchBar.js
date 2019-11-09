@@ -32,7 +32,10 @@ const SearchBar = () => {
           />
           <label htmlFor="searchTerm">Search...</label>
         </div>
-        <button type="submit" className="btn">
+        <button
+          type="submit"
+          className="btn waves-effect waves-light grey darken-4"
+        >
           Search
         </button>
       </form>

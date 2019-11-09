@@ -6,7 +6,7 @@ const MovieDetails = () => {
   const { movie, directors, actors } = useContext(MovieContext);
   console.log(movie);
 
-  const timeConvert = data => {
+  const convertTime = data => {
     const min = data % 60;
     const h = (data - min) / 60;
     return `${h}h${min}min`;
@@ -33,7 +33,7 @@ const MovieDetails = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          padding: "10px 0",
+          padding: "10px 0"
         }}
       >
         {/* <div className="container"> */}
@@ -45,17 +45,21 @@ const MovieDetails = () => {
             />
           </div>
           <div className="movie-details-content__description">
-            <h1 style={{marginTop: 0}}>{movie.title}</h1>
+            <h1 style={{ marginTop: 0 }}>{movie.title}</h1>
             <p>PLOT</p>
             <p>{movie.overview}</p>
             {directors.length > 1 ? <p>DIRECTORS</p> : <p>DIRECTOR</p>}
             {directors.map((director, i) => {
-              return <p style={{margin: 0}} key={i}>{director.name}</p>;
+              return (
+                <p style={{ margin: 0 }} key={i}>
+                  {director.name}
+                </p>
+              );
             })}
             <div className="movie-details-content__bar">
               <p>
                 <i class="left material-icons">access_time</i>Runtime:{" "}
-                {timeConvert(movie.runtime)}
+                {convertTime(movie.runtime)}
               </p>
               <p>
                 <i class="left material-icons">attach_money</i>Budget:{" "}
@@ -72,7 +76,7 @@ const MovieDetails = () => {
       </div>
     );
   } else {
-    return <p>no movie</p>;
+    return null
   }
 };
 

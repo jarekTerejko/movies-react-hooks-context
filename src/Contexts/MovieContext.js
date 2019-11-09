@@ -12,7 +12,9 @@ const MovieContextProvider = props => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movie, setMovie] = useState(null);
   const [actors, setActors] = useState(null);
+  const [actorDetails, setActorDetails] = useState(null)
   const [directors, setDirectors] = useState([]);
+const [actorMovies, setActorMovies] = useState([])
 
   useEffect(() => {
     setLoading(true);
@@ -104,6 +106,7 @@ const MovieContextProvider = props => {
       setTotalPages(data.total_pages);
       setLoading(false);
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   };
@@ -124,7 +127,6 @@ const MovieContextProvider = props => {
     if (searchTerm === "") {
       endpoint = `${apiUrl}movie/popular?api_key=${apiKey}&page=1`;
     } else {
-      console.log(123);
       endpoint = `${apiUrl}search/movie?api_key=${apiKey}&query=${searchTerm}`;
     }
 
@@ -134,6 +136,38 @@ const MovieContextProvider = props => {
 
     console.log(movies);
   };
+
+  const getActorMovies = async endpoint => {
+    if(actorMovies) {
+      setActorMovies([])
+    }
+    try {
+      setLoading(true)
+      const response = await fetch(endpoint)
+      const data = await response.json()
+      setActorMovies(data.cast)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
+  }
+
+  const getActorDetails = async endpoint => {
+    if(actorDetails) {
+      setActorDetails(null)
+    }
+    try {
+      setLoading(true)
+      const response = await fetch(endpoint)
+      const data = await response.json()
+      setActorDetails(data)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
+  }
 
   return (
     <MovieContext.Provider
@@ -155,7 +189,11 @@ const MovieContextProvider = props => {
         movie,
         getMoviePeoples,
         directors,
-        actors
+        actors,
+        getActorDetails,
+        actorDetails,
+        getActorMovies,
+        actorMovies
       }}
     >
       {props.children}

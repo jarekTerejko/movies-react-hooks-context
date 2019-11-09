@@ -40,15 +40,18 @@ const Movie = props => {
 
   if (loading) {
     return <Spinner />;
-  }
-  return (
-    <div>
-      <MovieDetailsNavbar url={props.match.params.movieId} />
-      <MovieDetails />
-      <MovieDetailsList/>
-      <Actor />
-    </div>
-  );
+  } 
+
+    return (
+      <div>
+        <MovieDetailsNavbar url={props.match.params.movieId} />
+        <MovieDetails />
+        <MovieDetailsList/>
+        <Actor />
+      </div>
+    );
+  
+  
 };
 
 export default Movie;

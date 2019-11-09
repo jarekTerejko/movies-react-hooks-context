@@ -40,15 +40,16 @@ const Home = () => {
           header={"Movies"}
         />
         {/* <Spinner/> */}
-        {loading ? <Spinner /> : null}
+        {/* {loading ? <Spinner /> : null} */}
         <LoadMoreBtn />
         {/* <LoadMoreBtn /> */}
         {/* <Spinner /> */}
       </div>
     );
-  } else {
-    return <Spinner />;
-  }
+  } 
+  // else {
+  //   return <Spinner />;
+  // }
 };
 
 export default Home;
