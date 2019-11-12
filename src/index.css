@@ -140,5 +140,9 @@ code {
     grid-template-columns: 1fr;
 
   }
+
+  nav .brand-logo {
+    font-size: 1.2rem;
+  }
 }
 

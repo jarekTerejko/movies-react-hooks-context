@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
 import { MovieContext } from "../Contexts/MovieContext";
-import Spinner from "./Spinner";
 import MovieCard from "./MovieCard";
 
 const Grid = props => {
   const { movies, loading } = useContext(MovieContext);
-
-  console.log(movies);
 
   const renderElements = () => {
     const gridMovies = movies.map((movie, i) => {
@@ -14,10 +11,6 @@ const Grid = props => {
     });
     return gridMovies;
   };
-
-  // if(loading) {
-  //     return <Spinner/>
-  // }
 
   return (
     <div className="container">

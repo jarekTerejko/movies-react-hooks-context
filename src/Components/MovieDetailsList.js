@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import { MovieContext } from "../Contexts/MovieContext";
-import { apiKey, apiUrl, imgBaseUrl, imgBig, imgPoster } from "../config";
 
 const MovieDetailsList = () => {
   const { movie } = useContext(MovieContext);
-  console.log(movie);
 
   if (movie) {
     return (
@@ -64,10 +62,14 @@ const MovieDetailsList = () => {
           <li className="collection-header">
             <h5>Other Details</h5>
           </li>
-          {movie.original_language && <li className="collection-item">
-            Language: {movie.original_language}
-          </li>} 
-          {movie.release_date && <li className="collection-item">Premiere: {movie.release_date}</li>}
+          {movie.original_language && (
+            <li className="collection-item">
+              Language: {movie.original_language}
+            </li>
+          )}
+          {movie.release_date && (
+            <li className="collection-item">Premiere: {movie.release_date}</li>
+          )}
           {movie.homepage ? (
             <li className="collection-item">
               <a

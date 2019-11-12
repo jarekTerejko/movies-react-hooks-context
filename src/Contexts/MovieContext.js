@@ -17,16 +17,13 @@ const MovieContextProvider = props => {
 const [actorMovies, setActorMovies] = useState([])
 
   useEffect(() => {
-    setLoading(true);
     const endpoint = `${apiUrl}movie/popular?api_key=${apiKey}&page=1`;
     getMovies(endpoint);
-    console.log("use effect hook");
-    setLoading(false);
   }, []);
 
   const getMovie = async endpoint => {
-    setLoading(true);
     try {
+      setLoading(true);
       const response = await fetch(endpoint);
       const data = await response.json();
       console.log(data);
@@ -59,13 +56,13 @@ const [actorMovies, setActorMovies] = useState([])
   };
 
   const getMovies = async endpoint => {
-    setLoading(true);
     try {
+      setLoading(true);
       const response = await fetch(endpoint);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setMovies([...data.results]);
-      console.log(movies);
+      // console.log(movies);
       setpopularMovie(
         popularMovie ||
           data.results[Math.floor(Math.random() * (data.results.length / 2))]
@@ -82,7 +79,7 @@ const [actorMovies, setActorMovies] = useState([])
   // method for more movies btn
   const getMoreMovies = async () => {
     let endpoint = "";
-    setLoading(true);
+    // setLoading(true);
     if (searchTerm === "") {
       endpoint = `${apiUrl}movie/popular?api_key=${apiKey}&page=${currentPage +
         1}`;
@@ -94,14 +91,13 @@ const [actorMovies, setActorMovies] = useState([])
   };
 
   const fetchMoreMovies = async endpoint => {
-    setLoading(true);
     try {
+      setLoading(true);
       const response = await fetch(endpoint);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setMovies([...movies, ...data.results]);
-      console.log(movies);
-      // setpopularMovie(popularMovie || data.results[Math.floor(Math.random()*(data.results.length/2))])
+      // console.log(movies);
       setCurrentPage(data.page);
       setTotalPages(data.total_pages);
       setLoading(false);
@@ -113,16 +109,9 @@ const [actorMovies, setActorMovies] = useState([])
   // getMovies(endpoint);
 
   const searchMovies = async searchTerm => {
-    setpopularMovie(null)
-
-    console.log(searchTerm);
-    console.log(movies);
-    let endpoint = "";
-
-
-    setMovies([]);
     setLoading(true);
-    console.log(movies);
+    setMovies([]);
+    let endpoint = "";
 
     if (searchTerm === "") {
       endpoint = `${apiUrl}movie/popular?api_key=${apiKey}&page=1`;
@@ -130,19 +119,16 @@ const [actorMovies, setActorMovies] = useState([])
       endpoint = `${apiUrl}search/movie?api_key=${apiKey}&query=${searchTerm}`;
     }
 
-    // setMovies([])
-
     await getMovies(endpoint);
-
-    console.log(movies);
   };
 
   const getActorMovies = async endpoint => {
-    if(actorMovies) {
-      setActorMovies([])
-    }
+    
     try {
       setLoading(true)
+      if(actorMovies) {
+        setActorMovies([])
+      }
       const response = await fetch(endpoint)
       const data = await response.json()
       setActorMovies(data.cast)
@@ -154,11 +140,12 @@ const [actorMovies, setActorMovies] = useState([])
   }
 
   const getActorDetails = async endpoint => {
-    if(actorDetails) {
-      setActorDetails(null)
-    }
+    
     try {
       setLoading(true)
+      if(actorDetails) {
+        setActorDetails(null)
+      }
       const response = await fetch(endpoint)
       const data = await response.json()
       setActorDetails(data)

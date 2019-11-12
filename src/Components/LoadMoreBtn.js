@@ -3,36 +3,35 @@ import { MovieContext } from "./../Contexts/MovieContext";
 import Spinner from "./Spinner";
 
 const LoadMoreBtn = () => {
-  const { getMoreMovies, currentPage, totalPages, loading, movies } = useContext(
+  const { getMoreMovies, currentPage, totalPages, loading } = useContext(
     MovieContext
   );
 
   if (loading) {
-    return <Spinner/>
+    return <Spinner />;
   } else {
     if (currentPage >= totalPages && !loading) {
-   
       return (
         <div className="container">
-          <h4  style={{margin: "30px 0"}} className="red-text text-darken-4">There is no more movies to show...</h4>
+          <h4 style={{ margin: "30px 0" }} className="red-text text-darken-4">
+            There is no more movies to show...
+          </h4>
         </div>
       );
     } else {
       return (
         <div className="container">
-          <button style={{margin: "30px 0"}} className="waves-effect waves-light btn" onClick={getMoreMovies}>
+          <button
+            style={{ margin: "30px 0" }}
+            className="btn waves-effect waves-light grey darken-4"
+            onClick={getMoreMovies}
+          >
             Load More
           </button>
         </div>
       );
     }
   }
-
-  // if (currentPage >= totalPages && !loading) {
-    
-  // } else {
-  //   return null
-  // }
 };
 
 export default LoadMoreBtn;

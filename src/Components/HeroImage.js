@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { apiKey, apiUrl, imgBaseUrl, imgBig, imgPoster } from "../config";
+import { imgBaseUrl, imgBig } from "../config";
 import { MovieContext } from "../Contexts/MovieContext";
 import Spinner from "./Spinner";
 
-const HeroImage = props => {
+const HeroImage = () => {
   const { popularMovie } = useContext(MovieContext);
-  console.log(popularMovie);
+  // console.log(popularMovie);
 
   return (
     <div>

@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { MovieContext } from "../Contexts/MovieContext";
-import { apiKey, apiUrl, imgBaseUrl, imgBig, imgPoster } from "../config";
+import { imgBaseUrl, imgBig, imgPoster } from "../config";
 
 const MovieDetails = () => {
-  const { movie, directors, actors } = useContext(MovieContext);
-  console.log(movie);
+  const { movie, directors } = useContext(MovieContext);
 
   const convertTime = data => {
     const min = data % 60;
@@ -27,7 +26,6 @@ const MovieDetails = () => {
             ? `linear-gradient(to bottom, rgba(0,0,0,.1) 20%, rgba(0,0,0,.9) 100%), url('${imgBaseUrl}${imgBig}${movie.backdrop_path}')`
             : "black",
           display: "flex",
-          /* justify-content: center; */
           alignItems: "center",
           minHeight: "80vh",
           backgroundPosition: "center",
@@ -36,7 +34,6 @@ const MovieDetails = () => {
           padding: "10px 0"
         }}
       >
-        {/* <div className="container"> */}
         <div className="movie-details-content container">
           <div className="movie-details-content__img">
             <img
@@ -72,11 +69,10 @@ const MovieDetails = () => {
             </div>
           </div>
         </div>
-        {/* </div> */}
       </div>
     );
   } else {
-    return null
+    return null;
   }
 };
 

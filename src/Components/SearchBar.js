@@ -1,18 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { MovieContext } from "../Contexts/MovieContext";
 
 const SearchBar = () => {
-  const { searchMovies, movies, searchTerm, setSearchTerm } = useContext(
-    MovieContext
-  );
+  const { searchMovies, searchTerm, setSearchTerm } = useContext(MovieContext);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(movies);
-    // setMovies([])
     searchMovies(searchTerm);
-    // setSearchTerm('')
-    console.log(movies);
   };
 
   return (
