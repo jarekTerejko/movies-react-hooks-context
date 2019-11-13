@@ -39,6 +39,7 @@ const MovieDetails = () => {
             <img
               src={`${imgBaseUrl}${imgPoster}${movie.poster_path}`}
               style={{ display: "block", maxWidth: "100%" }}
+              alt={movie.title}
             />
           </div>
           <div className="movie-details-content__description">
@@ -55,15 +56,15 @@ const MovieDetails = () => {
             })}
             <div className="movie-details-content__bar">
               <p>
-                <i class="left material-icons">access_time</i>Runtime:{" "}
+                <i className="left material-icons">access_time</i>Runtime:{" "}
                 {convertTime(movie.runtime)}
               </p>
               <p>
-                <i class="left material-icons">attach_money</i>Budget:{" "}
+                <i className="left material-icons">attach_money</i>Budget:{" "}
                 {formatter.format(movie.budget)}
               </p>
               <p>
-                <i class="left material-icons">beenhere</i>Revenue:{" "}
+                <i className="left material-icons">beenhere</i>Revenue:{" "}
                 {formatter.format(movie.revenue)}
               </p>
             </div>

@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="grey darken-4">
       <div className="nav-wrapper">
         <Link to="/" className="brand-logo center">
-        <i class="material-icons">movie_filter</i>
+        <i className="material-icons">movie_filter</i>
         Movies App
         </Link>
         {/* <ul id="nav-mobile" className="left hide-on-med-and-down">

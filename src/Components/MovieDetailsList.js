@@ -77,7 +77,7 @@ const MovieDetailsList = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Official Site <i class="material-icons">link</i>
+                Official Site <i className="material-icons">link</i>
               </a>
             </li>
           ) : null}

@@ -5,9 +5,10 @@ import Grid from "./Grid";
 import LoadMoreBtn from "./LoadMoreBtn";
 // import Spinner from "./Spinner";
 import { MovieContext } from "../Contexts/MovieContext";
+import Spinner from "./Spinner";
 
 const Home = () => {
-  const { movies } = useContext(MovieContext);
+  const { movies, loading, searchTerm } = useContext(MovieContext);
 
   if (movies) {
     return (
@@ -16,8 +17,9 @@ const Home = () => {
           <HeroImage />
           <SearchBar />
         </div>
-        <Grid header={"Movies"} />
-        <LoadMoreBtn />
+        <Grid header={ searchTerm ? "Search Result" : "Movies"} />
+        {loading ? <Spinner/> : null}
+        { !loading ? <LoadMoreBtn /> : null}
       </div>
     );
   }

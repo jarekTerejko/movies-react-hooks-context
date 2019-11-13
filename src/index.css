@@ -144,5 +144,19 @@ code {
   nav .brand-logo {
     font-size: 1.2rem;
   }
+
+  .actor-info {
+    justify-items: center;
+  }
+
+  .actor-info__img {
+    grid-column: 1/4;
+    grid-row: 1/2;
+    
+  }
+  .actor-info__content {
+    grid-column: 1/4;
+    grid-row: 2/3;
+  }
 }
 

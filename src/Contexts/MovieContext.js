@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { apiKey, apiUrl, imgBaseUrl, imgBig, imgPoster } from "../config";
+import { apiKey, apiUrl, imgBaseUrl, imgPoster } from "../config";
 
 export const MovieContext = createContext();
 
@@ -12,9 +12,9 @@ const MovieContextProvider = props => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movie, setMovie] = useState(null);
   const [actors, setActors] = useState(null);
-  const [actorDetails, setActorDetails] = useState(null)
+  const [actorDetails, setActorDetails] = useState(null);
   const [directors, setDirectors] = useState([]);
-const [actorMovies, setActorMovies] = useState([])
+  const [actorMovies, setActorMovies] = useState([]);
 
   useEffect(() => {
     const endpoint = `${apiUrl}movie/popular?api_key=${apiKey}&page=1`;
@@ -26,7 +26,7 @@ const [actorMovies, setActorMovies] = useState([])
       setLoading(true);
       const response = await fetch(endpoint);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       if (data.status_code) {
         setLoading(false);
@@ -44,10 +44,10 @@ const [actorMovies, setActorMovies] = useState([])
       setLoading(true);
       const response = await fetch(endpoint);
       const data = await response.json();
-      console.log(data);
-      const directors = data.crew.filter(person => person.job === "Director")
-      setDirectors(directors)
-      setActors(data.cast)
+      // console.log(data);
+      const directors = data.crew.filter(person => person.job === "Director");
+      setDirectors(directors);
+      setActors(data.cast);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -71,7 +71,7 @@ const [actorMovies, setActorMovies] = useState([])
       setTotalPages(data.total_pages);
       setLoading(false);
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.log(error);
     }
   };
@@ -102,7 +102,7 @@ const [actorMovies, setActorMovies] = useState([])
       setTotalPages(data.total_pages);
       setLoading(false);
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.log(error);
     }
   };
@@ -123,38 +123,38 @@ const [actorMovies, setActorMovies] = useState([])
   };
 
   const getActorMovies = async endpoint => {
-    
     try {
-      setLoading(true)
-      if(actorMovies) {
-        setActorMovies([])
-      }
-      const response = await fetch(endpoint)
-      const data = await response.json()
-      setActorMovies(data.cast)
-      setLoading(false)
+      setLoading(true);
+      setActorMovies([]);
+      // if(actorMovies) {
+      //   setActorMovies([])
+      // }
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      setActorMovies(data.cast);
+      setLoading(false);
     } catch (error) {
-      setLoading(false)
-      console.log(error)
+      setLoading(false);
+      console.log(error);
     }
-  }
+  };
 
   const getActorDetails = async endpoint => {
-    
     try {
-      setLoading(true)
-      if(actorDetails) {
-        setActorDetails(null)
-      }
-      const response = await fetch(endpoint)
-      const data = await response.json()
-      setActorDetails(data)
-      setLoading(false)
+      setLoading(true);
+      setActorDetails(null);
+      // if(actorDetails) {
+      //   setActorDetails(null)
+      // }
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      setActorDetails(data);
+      setLoading(false);
     } catch (error) {
-      setLoading(false)
-      console.log(error)
+      setLoading(false);
+      console.log(error);
     }
-  }
+  };
 
   return (
     <MovieContext.Provider

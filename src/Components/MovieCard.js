@@ -6,11 +6,10 @@ import no_image from "../images/no-image.png";
 const MovieCard = ({ movie }) => {
   const { imgBaseUrl, imgPoster } = useContext(MovieContext);
 
-  console.log(movie);
   return (
     <>
-      <div class="card">
-        <div class="card-image">
+      <div className="card">
+        <div className="card-image">
           {/* <Link to={`/movie/${movie.id}`}> */}
           <Link
             to={{ pathname: `/movie/${movie.id}`, title: `${movie.title}` }}
@@ -21,6 +20,7 @@ const MovieCard = ({ movie }) => {
                   ? `${imgBaseUrl}${imgPoster}${movie.poster_path}`
                   : no_image
               }
+              alt={movie.title}
             />{" "}
             <span className="waves-effect waves-teal btn-flat">
               {movie.title}

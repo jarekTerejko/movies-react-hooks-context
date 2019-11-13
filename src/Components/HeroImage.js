@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
 import { imgBaseUrl, imgBig } from "../config";
 import { MovieContext } from "../Contexts/MovieContext";
-import Spinner from "./Spinner";
 
 const HeroImage = () => {
-  const { popularMovie } = useContext(MovieContext);
+  const { popularMovie, searchTerm } = useContext(MovieContext);
   // console.log(popularMovie);
 
   return (
     <div>
-      {popularMovie ? (
+      {popularMovie && !searchTerm ? (
         <div
           style={{
             background: `linear-gradient(to bottom, rgba(0,0,0,.4) 20%, rgba(0,0,0,.9) 100%), url('${imgBaseUrl}${imgBig}${popularMovie.backdrop_path}')`,
@@ -29,9 +28,7 @@ const HeroImage = () => {
             <p>{popularMovie.overview}</p>
           </div>
         </div>
-      ) : (
-        <Spinner />
-      )}
+      ) : null}
     </div>
   );
 };

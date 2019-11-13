@@ -1,20 +1,9 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { MovieContext } from "../Contexts/MovieContext";
 import { Link } from "react-router-dom";
-import { apiKey, apiUrl, imgBaseUrl, imgBig, imgPoster } from "../config";
-import Spinner from "./Spinner";
-import no_image from "../images/no-image.png";
 
 export const ActorMovies = () => {
-  const {
-    actorDetails,
-    getActorDetails,
-    loading,
-    getActorMovies,
-    actorMovies
-  } = useContext(MovieContext);
-
-  let actorMoviesFiltred;
+  const { actorMovies } = useContext(MovieContext);
 
   if (actorMovies) {
     return (
@@ -24,10 +13,8 @@ export const ActorMovies = () => {
             <h3>Acting</h3>
           </li>
 
-          {/* <p>{actorMovies[0].title}</p> */}
-          {console.log(actorMovies[0])}
           {
-            (actorMoviesFiltred = actorMovies
+            (actorMovies
               .filter(movie => {
                 return movie.release_date;
               })
@@ -66,9 +53,3 @@ export const ActorMovies = () => {
     return null;
   }
 };
-
-{
-  /* .sort((a,b)=> {
-          return Number(b.release_date.substring(0,4)) - Number(a.release_date.substring(0,4)) 
-        }) */
-}

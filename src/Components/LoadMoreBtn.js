@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
 import { MovieContext } from "./../Contexts/MovieContext";
-import Spinner from "./Spinner";
 
 const LoadMoreBtn = () => {
   const { getMoreMovies, currentPage, totalPages, loading } = useContext(
     MovieContext
   );
 
-  if (loading) {
-    return <Spinner />;
-  } else {
+
     if (currentPage >= totalPages && !loading) {
       return (
         <div className="container">
@@ -32,6 +29,6 @@ const LoadMoreBtn = () => {
       );
     }
   }
-};
+
 
 export default LoadMoreBtn;
