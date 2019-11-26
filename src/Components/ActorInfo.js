@@ -3,7 +3,7 @@ import { MovieContext } from "../Contexts/MovieContext";
 import { imgBaseUrl, imgPoster } from "../config";
 import no_image from "../images/no-image.png";
 
-export const ActorInfo = () => {
+const ActorInfo = () => {
   const { actorDetails } = useContext(MovieContext);
 
   if (actorDetails) {
@@ -25,7 +25,7 @@ export const ActorInfo = () => {
           <div className="actor-info__content">
             <ul className="collection with-header">
               <li className="collection-header">
-                <h3 style={{marginTop: 0}}>{actorDetails.name}</h3>
+                <h3 style={{ marginTop: 0 }}>{actorDetails.name}</h3>
               </li>
               <li className="collection-item">
                 <span style={{ display: "block", fontWeight: 500 }}>
@@ -57,7 +57,7 @@ export const ActorInfo = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Visit Site <i class="material-icons">link</i>
+                    Visit Site <i className="material-icons">link</i>
                   </a>
                 </li>
               ) : null}
@@ -70,3 +70,5 @@ export const ActorInfo = () => {
     return null;
   }
 };
+
+export default ActorInfo;

@@ -125,10 +125,6 @@ const MovieContextProvider = props => {
   const getActorMovies = async endpoint => {
     try {
       setLoading(true);
-      setActorMovies([]);
-      // if(actorMovies) {
-      //   setActorMovies([])
-      // }
       const response = await fetch(endpoint);
       const data = await response.json();
       setActorMovies(data.cast);
@@ -142,10 +138,6 @@ const MovieContextProvider = props => {
   const getActorDetails = async endpoint => {
     try {
       setLoading(true);
-      setActorDetails(null);
-      // if(actorDetails) {
-      //   setActorDetails(null)
-      // }
       const response = await fetch(endpoint);
       const data = await response.json();
       setActorDetails(data);

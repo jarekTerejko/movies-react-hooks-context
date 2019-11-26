@@ -2,8 +2,8 @@ import React, { useEffect, useContext } from "react";
 import { MovieContext } from "../Contexts/MovieContext";
 import { apiKey, apiUrl } from "../config";
 import Spinner from "./Spinner";
-import { ActorMovies } from "./ActorMovies";
-import { ActorInfo } from "./ActorInfo";
+import ActorMovies from "./ActorMovies";
+import ActorInfo from "./ActorInfo";
 
 const ActorDetails = props => {
   // console.log(props);
